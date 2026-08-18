@@ -21,7 +21,15 @@ async function getEvents() {
 export default async function Home() {
   const events = await getEvents();
   return <main style={{maxWidth:1100,margin:'0 auto',padding:'32px 20px',fontFamily:'Arial,sans-serif'}}>
-    <header style={{marginBottom:28}}><h1 style={{fontSize:36,marginBottom:8}}>Eventos BeOn - 2026</h1><p style={{color:'#666'}}>Catálogo de eventos</p></header>
+    <header style={{marginBottom:28}}>
+      <h1 style={{fontSize:36,marginBottom:8}}>Eventos BeOn - 2026</h1>
+      <p style={{color:'#666',margin:'0 0 14px'}}>Catálogo de eventos</p>
+      <div style={{padding:'14px 16px',borderRadius:12,background:'#f1ecff',border:'1px solid #d9ccff',lineHeight:1.7}}>
+        <div><strong>Código:</strong> MATHEUSMASCENA</div>
+        <div><strong>Compre pela tarja roxa → 5% de desconto!</strong></div>
+        <div><strong>Instagram:</strong> <a href="https://www.instagram.com/mat_mascena97?igsh=ZzFuYWduZGw5ZG43&igsi=ZzFuYWduZGw5ZG43&utm_source=qr" target="_blank" rel="noreferrer">Matheus Alves</a></div>
+      </div>
+    </header>
     <section style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:20}}>
       {events.map((event) => { const key = Object.keys(images).find(k => event.name?.toLowerCase().includes(k.toLowerCase().replace('the grid: ','')) || k.toLowerCase().includes(event.name?.toLowerCase())); const image = key ? images[key] : event.image_url; return <article key={event.id} style={{border:'1px solid #ddd',borderRadius:16,overflow:'hidden',background:'#fff'}}>
         {image && <img src={image} alt={event.name} style={{width:'100%',height:240,objectFit:'cover',display:'block'}} />}
